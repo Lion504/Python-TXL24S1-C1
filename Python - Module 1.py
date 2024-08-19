@@ -1,2 +1,1 @@
-print = ("Hello, Wang Yongzhi!")
-
+print ("Hello, Wang Yongzhi!")
