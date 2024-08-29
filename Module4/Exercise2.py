@@ -1,9 +1,14 @@
-#Write a program that uses a while loop to print out all numbers divisible by three in the range of 1-1000.
-n = 1
-n_list = []
-while n <= 1000:
-    if n % 3 == 0:
-        n_list.append(n)
-    n += 1
-print(n_list)
+#Write a program that converts inches to centimeters until the user inputs a negative value. Then the program ends.
+
+inch = int(input("Enter a inches: "))
+
+while True:
+
+    if inch > 0:
+        centimeters = inch * 2.54
+        print(centimeters)
+        inch = float(input("Enter a inches: "))
+    else:
+        print('Invalid value, program ends!')
+        break
 
