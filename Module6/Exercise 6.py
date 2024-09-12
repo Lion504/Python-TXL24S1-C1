@@ -4,9 +4,9 @@ def main():
     p_value1, p_value2 = p_calculate(input_diameter1,input_price1,input_diameter2,input_price2)
     value_best = p_compare(p_value1, p_value2)
     if value_best == p_value1:
-        print(f'p1 is most valuable pizza')
+        print(f'pizza 1 is best value for money.')
     else:
-        print(f'p2 is most valuable pizza')
+        print(f'pizza 2 is best value for money.')
 
 def get_input():
     input_diameter1 = float(input('Entre a diameter of the pizza 1 in centimeter: '))
