@@ -1,20 +1,20 @@
-def main():
-        gasoline = user_input()
-        convert(gasoline)
+'''def main():
+    list_int = [1,2,3,4,5,6,7,8,9,10]
+    #list_int = range(1,11)
+    i = sum(list_int)
+    print(i)
 
-def convert(gas):
-    if gas is not None:
-        liter = gas * 3.785412
-        print(f'{gas} Gallons = {liter: .2f} Litres')
+print('Sum of those integers is :')
+main()'''
+#from Module4.Exercise3 import number_s
 
-def user_input():
-    while True:
-        try:
-            user_input = int(input("Entre a Gasoline Volume:  "))
-            if user_input >= 0:
-                return user_input
-            else:
-                break
-        except ValueError:
-            print(f'Invalid value!')
-main()
+
+def first(n):
+    num, nums = 0, []
+    while num < n:
+        nums.append(num)
+        num += 1
+    return nums
+
+sum_num = sum(first(11))
+print(f'Sum of those integers is:{sum_num}')
