@@ -1,23 +1,20 @@
-'''while True:
-    user_input = int(input('Entre a number: '))
-    if user_input > 1:
-        for i in range(1, user_input +1) :
-            if  user_input != 1 and i != user_input and user_input % i == 0:
-                print(f'{user_input}It is not a prime number')
-            else:
-                print(f'{user_input}it is a prime number')
-    else:
-        print(f'{user_input}it is a prime number')
-    break'''
+import random
+def get_dice(dices,times):
+        for i in range(times):
+            roll_list = []
+            for j in range(dices):
+                roll_dice = random.randint(1, 6)
+                roll_list.append(roll_dice)
 
-while True:
-    user_input = int(input('Entre a number: '))
-    if user_input > 1:
-        for i in range(1, user_input +1) :
-            if  user_input != 1 and i != user_input and user_input % i == 0:
-                print(f'{user_input} is not a prime number')
-            else:
-                print(f'{user_input} is a prime number')
-    else:
-        print(f'{user_input} is a prime number')
-    break
+            print(f'{i+1} time you rolled {roll_list}')
+            print(f'{sum(roll_list)}')
+
+input_dice = int(input('How many dice you want to roll: '))
+input_times = int(input('How many times you want to roll: '))
+get_dice(input_dice,input_times)
+
+
+
+
+
+
