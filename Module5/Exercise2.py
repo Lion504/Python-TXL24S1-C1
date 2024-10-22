@@ -17,5 +17,6 @@ while True:
 
 #manage list as descending order and choose first 5 number
 number.sort(reverse=True)
+#number_l = number[:5]
 number_l = number[:5]
 print(f'The 5 greatest number is: {number_l}')
