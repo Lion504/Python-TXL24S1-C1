@@ -7,7 +7,7 @@ class Elevator:
 
     def elevator_move(self,floor_get):
         if floor_get > self.floor_top:
-            print("It's too high to reach!")
+            print(f"It's too high to reach!")
         elif floor_get < self.floor_bottom:
             print("It's too deep to go bro!")
         else:
@@ -27,8 +27,10 @@ class Elevator:
 
     def move_down(self):
         for down in range(self.current_floor,self.floor_want_go-1,-1):
-
+            if down == 0: #skip 0
+                continue
             print(f"Going down, floor {down}")
+
         self.current_floor = self.current_floor
 
     def initial_elevator(self):
@@ -47,11 +49,11 @@ class Building(Elevator):
         
 
 
-new_building = Building(1,8,5)
+new_building = Building(-3,8,5)
 
 new_building.run_elevator(2,3)
 
-new_building.run_elevator(9,3) #top floor out of range
-new_building.run_elevator(0,3) #bottom floor out of range
-new_building.run_elevator(-1,3) #bottom floor out of range negative number test
+new_building.run_elevator(9,1) #top floor out of range
+new_building.run_elevator(-4,4) #bottom floor out of range
+new_building.run_elevator(-1,2) #bottom floor out of range negative number test
 new_building.run_elevator(2,-1) #elevator out of range negative number test
