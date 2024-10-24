@@ -44,7 +44,14 @@ class Building(Elevator):
         self.elevator_num = elevator_num
         self.elevator = Elevator(floor_bottom, floor_top)
     def run_elevator(self, accept_floor, accept_elevator):
-        print(f"You chosen No.{accept_elevator} elevator.")
+        if accept_elevator > self.elevator_num:
+            print(f"No.{accept_elevator} elevator not exist!")
+            return
+        elif accept_elevator < 0:
+            print(f"No.{accept_elevator} elevator not exist!")
+            return
+        else:
+            print(f"You chosen No.{accept_elevator} elevator.")
         self.elevator.elevator_move(accept_floor)
         
 
@@ -52,10 +59,9 @@ class Building(Elevator):
 new_building = Building(-3,8,5)
 
 new_building.run_elevator(2,3)
-
+new_building.elevator.initial_elevator()
 #test
 new_building.run_elevator(9,1) #top floor out of range
 new_building.run_elevator(-4,4) #bottom floor out of range
 new_building.run_elevator(-1,2) #bottom floor out of range negative number test
 new_building.run_elevator(2,-1) #elevator out of range negative number test
-new_building.elevator.initial_elevator()
