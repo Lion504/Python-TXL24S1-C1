@@ -31,20 +31,19 @@ class Elevator:
                 continue
             print(f"Going down, floor {down}")
 
-        self.current_floor = self.current_floor
+        self.current_floor = self.floor_want_go
 
     def initial_elevator(self):
         self.current_floor = 1
         print("initialise elevator to 1 floor")
 
 
-class Building():
+class Building:
     def __init__(self, floor_bottom, floor_top, elevator_num):
         self.floor_bottom = floor_bottom
         self.floor_top = floor_top
         self.elevator_num = elevator_num
-        self.elevator = [Elevator(floor_bottom, floor_top) for _ in  range(elevator_num)]# create several class for each elevator
-        self.elevator_used = None
+        self.elevators = [Elevator(floor_bottom, floor_top) for _ in range(elevator_num)]# create several class for each elevator
     def run_elevator(self, accept_floor, accept_elevator):
         if accept_elevator > self.elevator_num:
             print(f"No.{accept_elevator} elevator not exist!")
@@ -53,13 +52,9 @@ class Building():
             print(f"No.{accept_elevator} elevator not exist!")
             return
 
-        elevator = self.elevator[accept_elevator - 1]
-        if self.elevator_used is not None and self.elevator_used == accept_elevator:
-            print(f"start from {self.elevator_used} elevator move from {elevator.current_floor}")
-        else:
-            print(f"Using elevator {accept_elevator}")
+        elevator = self.elevators[accept_elevator - 1]
+        print(f"start from {accept_elevator} elevator move from {elevator.current_floor}")
 
-        self.elevator_used = accept_elevator
         elevator.elevator_move(accept_floor)
 
 
