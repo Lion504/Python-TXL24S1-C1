@@ -7,9 +7,9 @@ class Elevator:
 
     def elevator_move(self,floor_get):
         if floor_get > self.floor_top:
-            print(f"It's too high to reach!")
+            print(f"Sorry {floor_get} floor is too high to reach!")
         elif floor_get < self.floor_bottom:
-            print("It's too deep to go bro!")
+            print(f"Sorry {floor_get} floor too deep to go bro!")
         else:
             if floor_get > self.current_floor:
                 self.floor_want_go = floor_get
@@ -45,7 +45,7 @@ class Building(Elevator):
         self.elevator = Elevator(floor_bottom, floor_top)
     def run_elevator(self, accept_floor, accept_elevator):
         print(f"You chosen No.{accept_elevator} elevator.")
-        self.elevator.elevator_move(accept_floor+1)
+        self.elevator.elevator_move(accept_floor)
         
 
 
