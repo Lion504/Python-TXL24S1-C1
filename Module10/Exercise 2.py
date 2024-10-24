@@ -19,6 +19,8 @@ class Elevator:
                 self.floor_want_go = floor_get
                 self.move_down()
                 print(f"You are reached {self.floor_want_go} floor")
+            else:
+                print(f"You are already at {self.current_floor} floor")
 
     def move_up(self):
         for up in range(self.current_floor, self.floor_want_go + 1, 1):
