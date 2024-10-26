@@ -55,7 +55,7 @@ class Building:
             return
 
         elevator = self.elevators[accept_elevator - 1]
-        print(f"start from {accept_elevator} elevator move from {elevator.current_floor}")
+        print(f"start from {accept_elevator} elevator move from {elevator.current_floor} floor")
 
         elevator.elevator_move(accept_floor)
 
