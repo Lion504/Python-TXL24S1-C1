@@ -1,9 +1,10 @@
 import requests
 import json
 class Weather_Forcast:
-    def __init__(self,url,location):
+    def __init__(self, url, location):
         self.url = url
         self.weather_location = location
+        self.forecast_days = 10 # didn't finished this forecast part
         self.weather_country = None
         self.weather_time = None
         self.weather_temp = None
@@ -12,15 +13,17 @@ class Weather_Forcast:
         self.weather_humidity = None
         self.weather_feelslike = None
         self.weather_uv = None
+        self.date = None
 
     def weather_search(self):
-        params = {
+        forecast = {
             'key': '60c9c688a405424a913163013242910',
             'q': self.weather_location,
-            'aqi':'no'
+            'aqi': 'no',
+            'days': self.forecast_days
         }
         try:
-            response = requests.get(self.url,params=params)
+            response = requests.get(self.url,params=forecast)
             response.raise_for_status()
             forecast = response.json()
             #format_forecast = json.dumps(forecast,indent=4)
@@ -38,12 +41,12 @@ class Weather_Forcast:
             print(f"An error occurred: {err}")
 
     def format_weather(self):
-        title_text = 'Weather forecast for '
+        title_text = 'Today weather in '
         title_width = len(title_text)+len(self.weather_location)+len(self.weather_country)+2
         print(f"{'-'*title_width}")
         print(f"{title_text}{self.weather_location}, {self.weather_country}")
         print(f"{'-' * title_width}")
-        weather_infor = [
+        current_weather_infor = [
             ('🕑Local Time', self.weather_time),
             ('🌡️Temperature', f'{self.weather_temp} ℃'),
             ('☁️Condition', self.weather_condition),
@@ -51,7 +54,7 @@ class Weather_Forcast:
             ('💧Humidity', f'{self.weather_humidity} %'),
             ('👕Feels Like', f'{self.weather_feelslike} ℃'),
             ('🏖️UV', self.weather_uv)]
-        for infor_name, infor in weather_infor:
+        for infor_name, infor in current_weather_infor:
             print(f"{infor_name}: {infor}")
         print(f"{'-' * title_width}")
 
@@ -59,7 +62,7 @@ def main():
     weather_api = f"http://api.weatherapi.com/v1/current.json?"
 
     while True:
-        print("Weather forecast, which city do you want to check?")
+        print("This is a weather checker, which city do you want to check?")
         location_input = input("")
         try:
             if location_input =="":
