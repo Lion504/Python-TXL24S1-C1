@@ -9,7 +9,7 @@ class Book(Publication):
         super().__init__(name)
 
     def print_information(self):
-        print(f"Book Name:{self.name} \nAuthor:{self.author} \nPages:{self.page_count} pages\n")
+        return f"Book Name:{self.name} \nAuthor:{self.author} \nPages:{self.page_count} pages\n"
 
 class Magazine(Publication):
     def __init__(self,name,chief_editor):
@@ -17,7 +17,7 @@ class Magazine(Publication):
         super().__init__(name)
 
     def print_information(self):
-        print(f"Magazine Name:{self.name} \nChief Editor:{self.chief_editor}\n")
+        return f"Magazine Name:{self.name} \nChief Editor:{self.chief_editor}\n"
 
 
 def main():
@@ -25,14 +25,14 @@ def main():
     publication_chief_editor = "Aki Hyyppä"
     public_maga = Magazine(publication_name,publication_chief_editor)
     print("Magazine List:")
-    public_maga.print_information()
+    print(public_maga.print_information())
 
     publication_name = "Donald Duck"
     publication_author = "Rosa Liksom"
     publication_pages = 192
     public_book = Book(publication_name,publication_author, publication_pages)
     print("Book List:")
-    public_book.print_information()
+    print(public_book.print_information())
 
 if __name__ == "__main__":
     main()
