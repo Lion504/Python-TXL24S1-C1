@@ -1,6 +1,3 @@
-from openpyxl.styles.builtins import title
-
-
 class Publication:
     def __init__(self,name):
         self.name = name
@@ -12,10 +9,11 @@ class Book(Publication):
         super().__init__(name)
 
     def print_information(self):
-        type = f"Book List: \n{"-" * 40}\n"
-        title = f"{'Book Name': <11} | {'Author': <11} | {'Pages': <11}\n"
-        infor = f"{self.name: >10} | {self.author: >10} | {self.page_count}\n"
-        return type+title+infor
+        type = f"{"-" * 41}\n|{'Book List': ^40}|\n{"-" * 41}\n"
+        title = f"|{'Book Name': ^14}|{'Author': ^14}|{'Pages': ^10}|\n"
+        infor = f"|{self.name: ^14}|{self.author: ^14}|{self.page_count: ^10}|\n"
+        close_line = f"{'-'*42}\n"
+        return type+title+infor+close_line
 
 class Magazine(Publication):
     def __init__(self,name,chief_editor):
@@ -23,10 +21,11 @@ class Magazine(Publication):
         super().__init__(name)
 
     def print_information(self):
-        type = f"Magazine List: \n{"-" * 40}\n"
-        title = f"{'Name': <11} | {'Chief Editor'} \n"
-        infor = f"{self.name: >10} | {self.chief_editor: >10}\n"
-        return type+title+infor
+        type = f"{"-" * 41}\n|{'Magazine List': ^40}|\n{"-" * 41}\n"
+        title = f"|{'Name': ^19}|{'Chief Editor': ^20}|\n"
+        infor = f"|{self.name: ^19}|{self.chief_editor: ^20}|\n"
+        close_line = f"{'-' * 42}\n"
+        return type+title+infor+close_line
 
 def main():
     publication_name = "Donald Duck"
