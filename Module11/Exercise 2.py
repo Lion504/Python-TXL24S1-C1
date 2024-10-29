@@ -40,38 +40,42 @@ class Race:
         self.joined_car = joined_car
 
     def hour_passes(self):
-        self.joined_car.accelerate()
-        self.joined_car.drive()
+        for car in self.joined_car:
+            car.accelerate()
+            car.drive()
 
     def print_status(self):
 
         print(f"{self.name},{self.distance_limit}")
         print(f"{'Registration number'} | {'Maximum speed':} | {'Current Speed'} | {'Travelled_distance'}")
         print("")
-        print(f"{self.joined_car.registration_number:>13}       |  {self.joined_car.maximum_speed:>5}km/h    |  {self.joined_car.current_speed:>5}km/h    | {self.joined_car.travelled_distance:>9}km")
+        for car in self.joined_car:
+            print(f"{car.registration_number:>13}       |  {car.maximum_speed:>5}km/h    |  {car.current_speed:>5}km/h    | {car.travelled_distance:>9}km")
         print("-" * 80)
 
 def main():
     race_distance = 8000
     race_name = "Grand Demolition Derby"
+    cars = []
     e_car = Electric_Car("ABC-15", 180, 52.5)
+    print(f"Car Type 1: Electric Car\nRegistration Number:{e_car.registration_number}  |  Maximum Speed:{e_car.maximum_speed}km/h  |  Battery Capacity:{e_car.battery}Kwh")
     car = Car_run(e_car.registration_number,e_car.maximum_speed)
-    race_e = Race(race_name, race_distance, car)
+    cars.append(car)
 
     g_car = Gasoline_Car("ACD-123", 165, 32.3)
+    print(f"Car Type 2: Gasoline Car\nRegistration Number:{g_car.registration_number}  |  Maximum Speed:{g_car.maximum_speed}km/h  |  Battery Capacity:{g_car.gas_volume}L")
     car = Car_run(g_car.registration_number,g_car.maximum_speed)
-    race_g = Race(race_name, race_distance, car)
+    cars.append(car)
+
+    race = Race(race_name,race_distance,cars)
+    print(f"\n{'*'*30}Test Race begin{'*'*30}")
 
     time = 0
     while time<= 3:
         time += 1
-        race_e.hour_passes()
-        race_g.hour_passes()
-        race_e.print_status()
-        race_g.print_status()
-    print(f"{time}hours")
-    race_e.print_status()
-    race_g.print_status()
+        race.hour_passes()
+        print(f"{time}hours")
+        race.print_status()
 
     print(f"Race finished in {time} hours")
 
