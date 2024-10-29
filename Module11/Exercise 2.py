@@ -11,11 +11,15 @@ class Electric_Car(Car):
     def __init__(self,registration_number,maximum_speed,battery):
         super().__init__(registration_number,maximum_speed)
         self.battery = battery
+    def car_infor(self):
+        return f"Car Type 1: Electric Car\nRegistration Number:{self.registration_number}   |  Maximum Speed:{self.maximum_speed}km/h  |  Battery Capacity:{self.battery}Kwh"
 
 class Gasoline_Car(Car):
     def __init__(self,registration_number,maximum_speed,gas_volume):
         super().__init__(registration_number,maximum_speed)
         self.gas_volume = gas_volume
+    def car_infor(self):
+        return f"Car Type 2: Gasoline Car\nRegistration Number:{self.registration_number}  |  Maximum Speed:{self.maximum_speed}km/h  |  Battery Capacity:{self.gas_volume}L"
 
 class Car_run(Car):
     def __init__(self, registration_number, maximum_speed):
@@ -58,12 +62,12 @@ def main():
     race_name = "Grand Demolition Derby"
     cars = []
     e_car = Electric_Car("ABC-15", 180, 52.5)
-    print(f"Car Type 1: Electric Car\nRegistration Number:{e_car.registration_number}  |  Maximum Speed:{e_car.maximum_speed}km/h  |  Battery Capacity:{e_car.battery}Kwh")
+    print(e_car.car_infor())
     car = Car_run(e_car.registration_number,e_car.maximum_speed)
     cars.append(car)
 
     g_car = Gasoline_Car("ACD-123", 165, 32.3)
-    print(f"Car Type 2: Gasoline Car\nRegistration Number:{g_car.registration_number}  |  Maximum Speed:{g_car.maximum_speed}km/h  |  Battery Capacity:{g_car.gas_volume}L")
+    print(g_car.car_infor())
     car = Car_run(g_car.registration_number,g_car.maximum_speed)
     cars.append(car)
 
