@@ -50,7 +50,7 @@ class Race:
 
     def print_status(self):
 
-        print(f"{self.name},{self.distance_limit}")
+        print(f"Racing Name: {self.name}\nDistance:{self.distance_limit}")
         print(f"{'Registration number'} | {'Maximum speed':} | {'Current Speed'} | {'Travelled_distance'}")
         print("")
 
@@ -73,11 +73,13 @@ def main():
     while not race.race_finished():
         time += 1
         race.hour_passes()
-
-        print(f"{time}hours")
-        race.print_status()
+        if time % 10 == 0:
+            print(f"{time}hours")
+            race.print_status()
 
     print(f"Race finished in {time} hours")
+    race.print_status()
+
 
 
 if __name__ == "__main__":
