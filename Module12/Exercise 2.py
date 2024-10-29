@@ -4,7 +4,6 @@ class Weather_Forcast:
     def __init__(self, url, location):
         self.url = url
         self.weather_location = location
-        self.forecast_days = 10 # didn't finished this forecast part
         self.weather_country = None
         self.weather_time = None
         self.weather_temp = None
@@ -20,7 +19,6 @@ class Weather_Forcast:
             'key': '60c9c688a405424a913163013242910',
             'q': self.weather_location,
             'aqi': 'no',
-            'days': self.forecast_days
         }
         try:
             response = requests.get(self.url,params=forecast)
